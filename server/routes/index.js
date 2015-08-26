@@ -5,10 +5,35 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/personal_project');
 
-var Quiz = mongoose.model('Quiz', {title: String, question: String, questionAnswers:{answer1: String, answer2: String, answer3: String, answer4: String}});
+var Quiz = mongoose.model('Quiz', {title: String, question: String, correctAnswer: String, otherAnswers: Array});
 
 router.post('/add', function(request, response, next){
-    var teacherQuizzes = new Quiz({title:request.body.title, question:request.body.question});
+    console.log(request.body);
+
+    var data = request.body.inputs[0];
+
+    var otherAnswers = [];
+    if(data.answer2){
+       otherAnswers.push(data.answer2);
+    }
+    if(data.answer3){
+        otherAnswers.push(data.answer3);
+    }
+    if(data.answer4){
+        otherAnswers.push(data.answer4);
+    }
+
+    console.log(data, otherAnswers);
+    console.log(data.answer1);
+
+
+    var teacherQuizzes = new Quiz({
+        title:request.body.title,
+        question: data.question,
+        correctAnswer: data.answer1,
+        otherAnswers: otherAnswers
+    });
+
     teacherQuizzes.save(function(err){
         if(err)console.log("teacherQuizzes error", err);
         response.send(teacherQuizzes.toJSON());

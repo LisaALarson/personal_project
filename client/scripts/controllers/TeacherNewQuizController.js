@@ -3,6 +3,7 @@ myApp.controller('TeacherNewQuizController', ['$scope', '$http', function($scope
     $scope.quiz={};
     $scope.quizzes=[];
 
+    //this function returns the object from the database
     var saveQuiz = function(){
         return $http.get('/quizzes').then(function(response){
             if(response.status !==200){
@@ -13,19 +14,26 @@ myApp.controller('TeacherNewQuizController', ['$scope', '$http', function($scope
             return response.data;
         })
     };
+
+    //this function sends the info from the form to the database
     $scope.add = function(quiz){
+        console.log(quiz);
         return $http.post('/add', quiz).then(saveQuiz);
     };
 
     $scope.questionNumber = 1;
-    $scope.inputCounter = 0;
+    $scope.inputCounter = 2;
     $scope.inputs = [{
-        id: 'input'
+        id: '1'
     }];
+
+    $scope.quiz.inputs = $scope.inputs;
+
+    //this function adds an additional question place for the form
     $scope.addQuestion = function(){
         $scope.questionNumber++;
         $scope.inputTemplate = {
-            id: 'input-' + $scope.inputCounter,
+            id: $scope.inputCounter,
             name: ''
         };
         $scope.inputCounter +=1;
