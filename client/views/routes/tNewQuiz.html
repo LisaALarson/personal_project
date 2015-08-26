@@ -1,32 +1,36 @@
 <h3>Let's Build a New Quiz!</h3>
 <h5>Quiz Code: {GENERATE QUIZ CODE}</h5>
-
+<hr>
 <form role="form-inline" name="quizForm">
     <div class="form-group">
         <label for="title">Quiz Title: </label>
         <input type="title" class="form-control" id="title" placeholder="Title" ng-model="quiz.title" required>
     </div>
-    <div class="form-group">
-        <label for="question">Question (GET QUESTION NUMBER HERE): </label>
-        <input type="question" class="form-control" id="question" placeholder="Question (NUMBER)">
+    <div ng-repeat="input in inputs track by input['id']">
+        <div class="form-group">
+            <label for="question">Question {{questionNumber}}: </label>
+            <input type="question" class="form-control" id="question" placeholder="Question (NUMBER)">
+        </div>
+        <div class="col-xs-3 form-group">
+            <label for="answer1"></label>
+            <input type="answer" class="form-control" id="answer1" placeholder="Correct Answer">
+        </div>
+        <div class="col-xs-3 form-group">
+            <label for="answer2"></label>
+            <input type="answer" class="form-control" id="answer2" placeholder="False Answer">
+        </div>
+        <div class="col-xs-3 form-group">
+            <label for="answer3"></label>
+            <input type="answer" class="form-control" id="answer3" placeholder="False Answer">
+        </div>
+        <div class="col-xs-3 form-group">
+            <label for="answer4"></label>
+            <input type="answer" class="form-control" id="answer4" placeholder="False Answer">
+        </div>
+
     </div>
-    <div class="col-xs-3 form-group">
-        <label for="answer1"></label>
-        <input type="answer" class="form-control" id="answer1" placeholder="Correct Answer">
-    </div>
-    <div class="col-xs-3 form-group">
-        <label for="answer2"></label>
-        <input type="answer" class="form-control" id="answer2" placeholder="False Answer">
-    </div>
-    <div class="col-xs-3 form-group">
-        <label for="answer3"></label>
-        <input type="answer" class="form-control" id="answer3" placeholder="False Answer">
-    </div>
-    <div class="col-xs-3 form-group">
-        <label for="answer4"></label>
-        <input type="answer" class="form-control" id="answer4" placeholder="False Answer">
-    </div>
-    <h5><button>Add Another Question</button></h5>
+
+    <h5><button type="button" id="add" ng-click="addQuestion()">Add Another Question</button></h5>
     <input type="submit" value="Save Quiz">
 </form>
 

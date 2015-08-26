@@ -1,11 +1,13 @@
 html{
     background-color: #D7FF52;
 }
-p, h1, h2, h3, h4, h5, h6{
+p, h1, h2, h3, h4, h5, h6, form{
     color: #FFD059;
 }
 header{
     background-color: #C26E90;
+    border-bottom: 10px;
+    border-bottom-color: #E8A268;
 }
 footer{
     background-color: #C26E90;
@@ -15,6 +17,15 @@ body{
     margin: 0 auto;
     background-color: #006475;
 }
-.main-body{
-    height: 300px, auto;
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;
+    background-color: #E8A268;
+    height: 3px;
+}
+button{
+    background-color: #E8A268;
+    color: #006475;
 }
