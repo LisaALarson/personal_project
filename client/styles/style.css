@@ -3,6 +3,7 @@ html{
 }
 p, h1, h2, h3, h4, h5, h6, form{
     color: #FFD059;
+    margin-left: 10px;
 }
 header{
     background-color: #C26E90;
@@ -28,6 +29,7 @@ hr {
 button{
     background-color: #E8A268;
     color: #006475;
+    margin-left: 10px;
 }
 li{
     color: #C26E90
@@ -40,4 +42,35 @@ li a:hover{
 }
 .deleteQuiz{
     float: right;
+    margin-right: 10px;
+}
+.deleteQuestion{
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+#question{
+    display: inline-block;
+    margin-left: 10px;
+    width: 93%;
+}
+#title{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 95%;
+}
+label{
+    margin-left: 10px;
+}
+#returnHome{
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+button:hover{
+    background-color: #FFD059;
+}
+#gameCode{
+    width: 30%;
 }

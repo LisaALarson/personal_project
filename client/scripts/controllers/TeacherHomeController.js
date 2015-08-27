@@ -18,12 +18,20 @@ myApp.controller('TeacherHomeController', ['$scope', '$http', function($scope, $
             return response.data;
         })
     };
-
+    //this calls the fetchQuizzes() function on page load
     fetchQuizzes();
 
-    var deleteQuiz = function(){
-        alert("Are you sure you want to delete this quiz?");
+
+    $scope.deleteQuiz = function(){
+        confirm("Are you sure you want to delete this quiz?");
+        return $http.delete("/:id").then(fetchQuizzes());
     };
+
+    //app.filter('reverse', function(){
+    //    return function(items){
+    //        return items.slice().reverse();
+    //    };
+    //});
 
 
 }]);//end controller

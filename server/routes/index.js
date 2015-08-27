@@ -5,12 +5,15 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/personal_project');
 
-var Quiz = mongoose.model('Quiz', {title: String, question: String, correctAnswer: String, otherAnswers: Array});
+var Quiz = mongoose.model('Quiz', {title: String, questions: Array});
 
+// this posts the information in the quiz form as a new quiz to the database
 router.post('/add', function(request, response, next){
-    console.log(request.body);
+    console.log(' ');
+    console.log("request" +  JSON.stringify(request.body));
+    console.log(' ');
 
-    var data = request.body.inputs[0];
+    var data = request.body.questions[0];
 
     var otherAnswers = [];
     if(data.answer2){
@@ -23,15 +26,15 @@ router.post('/add', function(request, response, next){
         otherAnswers.push(data.answer4);
     }
 
-    console.log(data, otherAnswers);
-    console.log(data.answer1);
+    //console.log(data, otherAnswers);
+    //console.log(data.answer1);
 
 
     var teacherQuizzes = new Quiz({
         title:request.body.title,
-        question: data.question,
-        correctAnswer: data.answer1,
-        otherAnswers: otherAnswers
+        questions: request.body.questions
+        //correctAnswer: data.answer1,
+        //otherAnswers: otherAnswers
     });
 
     teacherQuizzes.save(function(err){
@@ -41,12 +44,23 @@ router.post('/add', function(request, response, next){
     });
 });
 
+//this gets all the quizzes from the database and sends them back clientside
 router.get('/quizzes', function(request, response, next){
     return Quiz.find({}).exec(function(err, quizzes){
         if(err)throw new Error(err);
         response.send(JSON.stringify(quizzes));
         next();
     });
+});
+
+//this finds a quiz by id in the database and deletes it
+router.delete("/:id", function(req, res, next){
+    Quiz.findByIdAndRemove(req.params.id, req.body, function(err,post){
+        if(err){
+            console.log("Error with delete!");
+        }
+        res.json(post);
+    })
 });
 
 router.get('/*', function(req, res){

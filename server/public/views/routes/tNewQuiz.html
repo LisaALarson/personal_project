@@ -1,3 +1,4 @@
+<h5><a href="#tHome"><button id="returnHome">Return Home<br>(without saving)</button></a></h5>
 <h3>Let's Build a New Quiz!</h3>
 <h5>Quiz Code: {GENERATE QUIZ CODE}</h5>
 <hr>
@@ -10,7 +11,9 @@
         <div class="form-group">
             <label for="question">Question {{question['id']}}: </label>
             <input type="question" class="form-control" id="question" placeholder="Question {{question['id']}}" ng-model="question.question" required>
+            <button class="deleteQuestion" ng-click="deleteQuestion($index)">X</button>
         </div>
+
         <div class="col-xs-3 form-group">
             <label for="answer1"></label>
             <input type="answer" class="form-control" id="answer1" placeholder="Correct Answer" ng-model="question.answer1" required>
@@ -31,7 +34,7 @@
     </div>
 
     <h5><button type="button" id="add" ng-click="addQuestion()">Add Another Question</button></h5>
-    <a href="#tHome"><input type="submit" value="Save Quiz" ng-click="add(quiz)"></a>
+    <h5><a href="#tHome"><button ng-click="add(quiz)">Save Quiz</button></a></h5>
 </form>
 
 
