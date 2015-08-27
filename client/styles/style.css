@@ -22,10 +22,22 @@ hr {
     clear:both;
     display:block;
     width: 100%;
-    background-color: #E8A268;
+    background-color: #D7FF52;
     height: 3px;
 }
 button{
     background-color: #E8A268;
     color: #006475;
+}
+li{
+    color: #C26E90
+}
+li a{
+    color: #C26E90
+}
+li a:hover{
+    color: #D7FF52
+}
+.deleteQuiz{
+    float: right;
 }

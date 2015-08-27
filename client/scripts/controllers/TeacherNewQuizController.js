@@ -3,22 +3,27 @@ myApp.controller('TeacherNewQuizController', ['$scope', '$http', function($scope
     $scope.quiz={};
     $scope.quizzes=[];
 
+
+
     //this function returns the object from the database
-    var saveQuiz = function(){
+    var fetchQuizzes = function(){
         return $http.get('/quizzes').then(function(response){
             if(response.status !==200){
                 throw new Error("Failed to save and return quiz from the api");
             }
             $scope.quiz = {};
             $scope.quizzes = response.data;
+            console.log($scope.quizzes);
             return response.data;
         })
     };
 
+    fetchQuizzes();
+
     //this function sends the info from the form to the database
     $scope.add = function(quiz){
         console.log(quiz);
-        return $http.post('/add', quiz).then(saveQuiz);
+        return $http.post('/add', quiz).then(fetchQuizzes);
     };
 
     $scope.questionNumber = 1;
