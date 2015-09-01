@@ -1,13 +1,10 @@
 myApp.controller('TeacherHomeController', ['$scope', '$http', function($scope, $http){
-    console.log("Teacher Home Controller");
 
     $scope.quiz={};
     $scope.quizzes=[];
 
-
-
     //this function returns the object from the database
-    var fetchQuizzes = function(){
+    $scope.fetchQuizzes = function(){
         return $http.get('/quizzes').then(function(response){
             if(response.status !==200){
                 throw new Error("Failed to save and return quiz from the api");
@@ -16,22 +13,17 @@ myApp.controller('TeacherHomeController', ['$scope', '$http', function($scope, $
             $scope.quizzes = response.data;
             console.log($scope.quizzes);
             return response.data;
-        })
+        });
     };
+
     //this calls the fetchQuizzes() function on page load
-    fetchQuizzes();
+    $scope.fetchQuizzes();
 
-
-    $scope.deleteQuiz = function(){
+    //this deletes questions from the database and the page
+    //this is being send as a POST because something is wrong with the DELETE functionality
+    $scope.deleteQuiz = function(data){
         confirm("Are you sure you want to delete this quiz?");
-        return $http.delete("/:id").then(fetchQuizzes());
+        return $http.post("/quizzes", data).then($scope.fetchQuizzes());
     };
-
-    //app.filter('reverse', function(){
-    //    return function(items){
-    //        return items.slice().reverse();
-    //    };
-    //});
-
 
 }]);//end controller

@@ -1,0 +1,16 @@
+<h2>Create a Teacher Account!</h2>
+<form method="post" id="teacherUser">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" ng-model="teacherUser.username"/>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" ng-model="teacherUser.password"/>
+    </div>
+    <div>
+        <h5><a href="#tHome"><button ng-click="register(teacherUser)">Register</button></a></h5>
+    </div>
+</form>
+
+

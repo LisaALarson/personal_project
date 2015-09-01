@@ -2,8 +2,8 @@
 <form role="form-inline" name="quizForm" novalidate>
     <div class="form-group">
         <label for="gameCode">Game Code: </label>
-        <input type="code" class="form-control" id="gameCode" placeholder="Game Code" ng-model="game.code" required>
-        <h5><a href="#sHome"><button ng-click="fetchGame()">Add Game</button></a></h5>
+        <input type="code" class="form-control" id="gameCode" placeholder="Game Code" ng-model="gameCode" required>
+        <h5><a href="#sHome"><button ng-click="fetchGame(gameCode)">Add Game</button></a></h5>
     </div>
 </form>
 

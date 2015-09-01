@@ -4,10 +4,9 @@
 <ul>
     <li ng-repeat="quiz in quizzes">
         <a href="#{{quiz.code}}">{{quiz.title}}</a>
-        <button class="deleteQuiz" ng-click="deleteQuiz()">X</button>
+        <button class="deleteQuiz" ng-click="deleteQuiz(quiz)">Delete Quiz</button>
         <br>
-        Quiz Code: (INSERT QUIZ CODE HERE)
+        Quiz Code: {{quiz.code}}
         <hr>
     </li>
-
 </ul>

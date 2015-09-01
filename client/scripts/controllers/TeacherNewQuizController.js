@@ -9,27 +9,33 @@ myApp.controller('TeacherNewQuizController', ['$scope', '$http', function($scope
     $scope.inputs = [{
         id: '1'
     }];
-    $scope.quiz = {};
+    //$scope.quiz = {};
     //$scope.quiz.inputs = $scope.inputs;
 
     //this function returns the object from the database
-    var fetchQuizzes = function(){
-        return $http.get('/quizzes').then(function(response){
-            if(response.status !==200){
-                throw new Error("Failed to save and return quiz from the api");
-            }
-            $scope.quizzes = response.data;
-            console.log($scope.quizzes);
-            return response.data;
-        })
-    };
+    //var fetchQuizzes = function(){
+    //    return $http.get('/quizzes').then(function(response){
+    //        if(response.status !==200){
+    //            throw new Error("Failed to save and return quiz from the api");
+    //        }
+    //        $scope.quizzes = response.data;
+    //        console.log($scope.quizzes);
+    //        return response.data;
+    //    })
+    //};
 
 
 
     //this function sends the info from the form to the database
     $scope.add = function(quiz){
+        var randomNumber= function(min, max) {
+            return Math.floor(Math.random() * (1 + max - min) + min);
+        };
+
+        quiz.code = randomNumber(1000, 9999);
         quiz.questions = $scope.inputs.slice();
-        return $http.post('/add', quiz).then(fetchQuizzes());
+        return $http.post('/add', quiz)
+
     };
 
     //this function adds an additional question place for the form
@@ -45,11 +51,10 @@ myApp.controller('TeacherNewQuizController', ['$scope', '$http', function($scope
         console.log($scope.inputs);
     };
 
+    //this function currently is non functional!
     $scope.deleteQuestion = function(index){
         $scope.this.parent.remove();
     };
-
-    //do I need this? test once database is fixed
-    fetchQuizzes();
+    //
 
 }]);//end controller

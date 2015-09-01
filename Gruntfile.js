@@ -29,6 +29,22 @@ module.exports = function(grunt){
                 src: 'client/scripts/controllers/StudentPlayGameController.js',
                 dest: 'server/public/assets/scripts/controllers/StudentPlayGameController.min.js'
             },
+            studentGameController: {
+                src: 'client/scripts/controllers/StudentGameController.js',
+                dest: 'server/public/assets/scripts/controllers/StudentGameController.min.js'
+            },
+            LoginController: {
+                src: 'client/scripts/controllers/LoginController.js',
+                dest: 'server/public/assets/scripts/controllers/LoginController.min.js'
+            },
+            TeacherRegisterController: {
+                src: 'client/scripts/controllers/TeacherRegisterController.js',
+                dest: 'server/public/assets/scripts/controllers/TeacherRegisterController.min.js'
+            },
+            StudentRegisterController: {
+                src: 'client/scripts/controllers/StudentRegisterController.js',
+                dest: 'server/public/assets/scripts/controllers/StudentRegisterController.min.js'
+            }
         },
         copy: {
             html: {
@@ -47,7 +63,11 @@ module.exports = function(grunt){
                     "views/routes/tNewQuiz.html",
                     "views/routes/sHome.html",
                     "views/routes/sJoinGame.html",
-                    "views/routes/sPlayGame.html"
+                    "views/routes/sPlayGame.html",
+                    "views/routes/sGame.html",
+                    "views/routes/login.html",
+                    "views/routes/tRegister.html",
+                    "views/routes/sRegister.html"
                 ],
                 "dest": "server/public"
             },

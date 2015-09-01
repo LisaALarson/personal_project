@@ -24,6 +24,22 @@ myApp.config(['$routeProvider', function($routeProvider){
             templateUrl: "/views/routes/sPlayGame.html",
             controller: "StudentPlayGameController"
         }).
+        when('/sGame', {
+            templateUrl: "/views/routes/sGame.html",
+            controller: "StudentGameController"
+        }).
+        when('/login', {
+            templateUrl: "/views/routes/login.html",
+            controller: "LoginController"
+        }).
+        when('/tRegister', {
+            templateUrl: "/views/routes/tRegister.html",
+            controller: "TeacherRegisterController"
+        }).
+        when('/sRegister', {
+            templateUrl: "/views/routes/sRegister.html",
+            controller: "StudentRegisterController"
+        }).
         otherwise({
             //if logged in as teacher, go to...
             redirectTo: "/tHome"

@@ -6,4 +6,8 @@ myApp.controller('StudentHomeController', ['$scope', '$http', function($scope, $
         //return $http.delete("/:id").then(fetchQuizzes());
     };
 
+
+
+
+
 }]); // end controller
