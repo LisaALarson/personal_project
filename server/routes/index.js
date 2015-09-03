@@ -88,6 +88,7 @@ router.post("/quizzes", function(req, res, next){
 //});
 
 router.get('/*', function(req, res){
+    console.log(req.params[0]);
     var file = req.params[0] || '/views/index.html';
     res.sendFile(path.join(__dirname, '../public', file));
 });

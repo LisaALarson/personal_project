@@ -10,6 +10,8 @@ var localStrategy = require('passport-local').Strategy;
 var User = require('./models/user');
 var index = require('./routes/index');
 var tRegister = require('./routes/tRegister');
+var login = require('./routes/login');
+
 
 
 //??var GameCode = require('./gameCode');
@@ -81,6 +83,7 @@ passport.use('local', new localStrategy({
 ///////////////////
 
 app.use('/tRegister', tRegister);
+app.use('/login', login);
 //app.use('/user', users);
 app.use('/', index);
 

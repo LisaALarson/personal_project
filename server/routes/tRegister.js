@@ -9,7 +9,7 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-    console.log("Made it to tRegister POST route!");
+    //console.log("Made it to tRegister POST route!");
     Users.create(req.body, function(err, post){
         if(err)
             next(err);

@@ -42,7 +42,7 @@ myApp.config(['$routeProvider', function($routeProvider){
         }).
         otherwise({
             //if logged in as teacher, go to...
-            redirectTo: "/tHome"
+            redirectTo: "/login"
             //else, go to...
             //redirectTo: "/sHome"
         })

@@ -74,3 +74,6 @@ button:hover{
 #gameCode{
     width: 30%;
 }
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}

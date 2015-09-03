@@ -9,7 +9,14 @@
         <input type="password" name="password" id="password" ng-model="teacherUser.password"/>
     </div>
     <div>
-        <h5><a href="#tHome"><button ng-click="register(teacherUser)">Register</button></a></h5>
+        <label for="status">Who are you?</label>
+        <br>
+        <input type="radio" name="status" value="Student" checked id="status" ng-model="teacherUser.status">Student
+        <br>
+        <input type="radio" name="status" value="Teacher" id="status" ng-model="teacherUser.status">Teacher
+    </div>
+    <div>
+        <h5><a href="#login"><button ng-click="register(teacherUser)">Register</button></a></h5>
     </div>
 </form>
 

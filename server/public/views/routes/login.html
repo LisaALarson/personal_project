@@ -1,39 +1,38 @@
 <p>Login Please!</p>
 
 <div id="teacherLogin">
-    <form action="/" method="post">
+    <form method="post" id="loginForm">
         <div>
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username"/>
+            <input type="text" name="username" id="username" ng-model="loginForm.username"/>
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password"/>
+            <input type="password" name="password" id="password" ng-model="loginForm.password"/>
         </div>
         <div>
-            <input type="submit" value="Log In"/>
-            <h5><a href="#tRegister"><button>Register as a Teacher</button></a></h5>
-
+            <h5><a href=""><button ng-click="authLogin(loginForm)">Login</button></a></h5>
+            <h5><a href="#tRegister"><button>Register</button></a></h5>
         </div>
     </form>
 </div>
 
-<div id="studentLogin">
-    <form action="/" method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username"/>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password"/>
-        </div>
-        <div>
-            <input type="submit" value="Log In"/>
-            <h5><a href="#sRegister"><button>Register as a Student</button></a></h5>
+<!--<div id="studentLogin">-->
+    <!--<form action="/" method="post">-->
+        <!--<div>-->
+            <!--<label for="username">Username:</label>-->
+            <!--<input type="text" name="username" id="username"/>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<label for="password">Password:</label>-->
+            <!--<input type="password" name="password" id="password"/>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<input type="submit" value="Log In"/>-->
+            <!--<h5><a href="#sRegister"><button>Register as a Student</button></a></h5>-->
 
-        </div>
-    </form>
-</div>
+        <!--</div>-->
+    <!--</form>-->
+<!--</div>-->
 
 

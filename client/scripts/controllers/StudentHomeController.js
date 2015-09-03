@@ -6,6 +6,14 @@ myApp.controller('StudentHomeController', ['$scope', '$http', function($scope, $
         //return $http.delete("/:id").then(fetchQuizzes());
     };
 
+    $scope.fetchData = function() {
+        //$http .then({
+            //set $scope
+    //});
+    };
+
+    $scope.fetchData();
+
 
 
 
