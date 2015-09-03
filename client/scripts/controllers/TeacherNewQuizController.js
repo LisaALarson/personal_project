@@ -1,5 +1,8 @@
-myApp.controller('TeacherNewQuizController', ['$scope', '$http', function($scope, $http){
+myApp.controller('TeacherNewQuizController', ['$scope', '$http', 'userProperties', function($scope, $http, userProperties){
     console.log("Teacher New Quiz Controller");
+
+    $scope.username = userProperties.get('username');
+    console.log("username:" + $scope.username);
 
     $scope.quiz={};
     $scope.quizzes=[];
@@ -31,7 +34,8 @@ myApp.controller('TeacherNewQuizController', ['$scope', '$http', function($scope
         var randomNumber= function(min, max) {
             return Math.floor(Math.random() * (1 + max - min) + min);
         };
-
+        quiz.players = [];
+        quiz.username = $scope.username;
         quiz.code = randomNumber(1000, 9999);
         quiz.questions = $scope.inputs.slice();
         return $http.post('/add', quiz)

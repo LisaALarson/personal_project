@@ -1,4 +1,4 @@
-<h4>Welcome (USER's NAME)!</h4>
+<h4>Welcome {{username}}!</h4>
 <h5><a href="#sJoinGame"><button>Join a New Game!</button></a></h5>
 <!--<ul>-->
     <!--<li ng-repeat="">-->
@@ -7,10 +7,20 @@
     <!--</li>-->
 
 <!--</ul>-->
+<!--<ul>-->
+    <!--<li>LIST</li>-->
+    <!--<li ng-repeat="quiz in quizzesToPlay">-->
+        <!--{{quiz.title}}-->
+        <!--<hr>-->
+    <!--</li>-->
+<!--</ul>-->
+
 <ul>
-    <li>LIST</li>
-    <li ng-repeat="quiz in quizzesToPlay">
-        {{quiz.title}}
+    <li ng-repeat="quiz in quizzes">
+        <a href="#{{quiz.code}}">{{quiz.title}}</a>
+        <button class="deleteQuiz" ng-click="deleteQuiz(quiz)">Delete Quiz</button>
+        <br>
+        Teacher: {{quiz.username}}
         <hr>
     </li>
 </ul>

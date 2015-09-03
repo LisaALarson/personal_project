@@ -1,8 +1,7 @@
-myApp.controller('LoginController', ['$scope', '$http', '$location', function($scope, $http, $location){
+myApp.controller('LoginController', ['$scope', '$http', '$location', 'userProperties', function($scope, $http, $location, userProperties){
     console.log("login controller");
 
-    //$scope.user = {};
-    //console.log("This is scope.user", $scope.user);
+    $scope.username = "";
 
     $scope.loginForm = {};
 
@@ -11,6 +10,11 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', function($s
 
         return $http.post('/login', user).then(function(resp){
             console.log(resp);
+            console.log(resp.data.username);
+
+            $scope.username = resp.data.username;
+            userProperties.set('username', $scope.username);
+
             if(resp.data.status == 'teacher'){
                 $location.path('tHome');
             } else {
@@ -22,6 +26,8 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', function($s
 
         })
     };
+
+
 
 
 

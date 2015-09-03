@@ -40,10 +40,6 @@ module.exports = function(grunt){
             TeacherRegisterController: {
                 src: 'client/scripts/controllers/TeacherRegisterController.js',
                 dest: 'server/public/assets/scripts/controllers/TeacherRegisterController.min.js'
-            },
-            StudentRegisterController: {
-                src: 'client/scripts/controllers/StudentRegisterController.js',
-                dest: 'server/public/assets/scripts/controllers/StudentRegisterController.min.js'
             }
         },
         copy: {
@@ -66,8 +62,7 @@ module.exports = function(grunt){
                     "views/routes/sPlayGame.html",
                     "views/routes/sGame.html",
                     "views/routes/login.html",
-                    "views/routes/tRegister.html",
-                    "views/routes/sRegister.html"
+                    "views/routes/tRegister.html"
                 ],
                 "dest": "server/public"
             },

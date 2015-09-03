@@ -53,11 +53,11 @@ router.post('/', passport.authenticate('local'), function(req, res) {
     if(user.status == 'Teacher'){
         var file = '/views/index.html';
         //res.sendFile(path.join(__dirname, '../public', file));
-        res.json({"status": "teacher"});
+        res.json({"status": "teacher", "username": user.username});
 
         //res.redirect('/views/routes/tHome.html');
     } else {
-        res.json({"status": "student"});
+        res.json({"status": "student", "username": user.username});
     }
     //console.log('RES: ' + JSON.stringify(res));
 

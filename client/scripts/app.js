@@ -47,3 +47,15 @@ myApp.config(['$routeProvider', function($routeProvider){
             //redirectTo: "/sHome"
         })
 }]);
+
+myApp.factory('userProperties', function(){
+    var properties = {};
+    return {
+        get: function(key){
+            return properties[key];
+        },
+        set: function(key, value){
+            properties[key] = value;
+        }
+    }
+})

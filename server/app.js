@@ -1,6 +1,7 @@
 var express = require('express');
 //var path = require('path');
 var app = express();
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var passport = require('passport');
@@ -26,9 +27,9 @@ app.use(session({
 }));
 
 
-//cookie parser?
+app.use(cookieParser());
 app.use(bodyParser.json());
-//body parser url encoded?
+app.use(bodyParser.urlencoded({expanded: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 

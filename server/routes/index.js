@@ -8,35 +8,53 @@ var mongoose = require('mongoose');
 //moved this line to app.js file
 //mongoose.connect('mongodb://localhost/personal_project');
 
-var Quiz = mongoose.model('Quiz', {title: String, questions: Array, code: Number});
+var Quiz = mongoose.model('Quiz', {title: String, questions: Array, code: Number, username: String, players: []});
 
 // this posts the information in the quiz form as a new quiz to the database
-router.post('/add', function(request, response, next){
+router.post('/add-player', function(request, response, next){
     console.log(' ');
-    console.log("request" +  JSON.stringify(request.body));
+    console.log("request ADD PLAYER" +  JSON.stringify(request.body));
     console.log(' ');
-
-    //var data = request.body.questions[0];
-
-    //var otherAnswers = [];
-    //if(data.answer2){
-    //   otherAnswers.push(data.answer2);
-    //}
-    //if(data.answer3){
-    //    otherAnswers.push(data.answer3);
-    //}
-    //if(data.answer4){
-    //    otherAnswers.push(data.answer4);
-    //}
-
-    //console.log(data, otherAnswers);
-    //console.log(data.answer1);
 
 
     var teacherQuizzes = new Quiz({
         title:request.body.title,
         questions: request.body.questions,
-        code: request.body.code
+        code: request.body.code,
+        username: request.body.username,
+        players: request.body.players
+        //correctAnswer: data.answer1,
+        //otherAnswers: otherAnswers
+    });
+    console.log("ASNCAOMWFCNISA", request.body.players);
+    Quiz.findByIdAndUpdate(request.body._id, {$push:{'players': request.body.players}},
+        {safe: true, upsert:true}, function(err){
+            console.log(err);
+        });
+
+    /*function(err){
+
+    //teacherQuizzes.update({code: request.body.code}, {$set: {players: request.body.players}}, function(err){
+
+        if(err)console.log("teacherQuizzes error", err);
+        response.send(teacherQuizzes.toJSON());
+        next();
+    });*/
+});
+
+router.post('/add', function(request, response, next){
+    console.log(' ');
+    console.log("request" +  JSON.stringify(request.body));
+    console.log(' ');
+
+
+
+    var teacherQuizzes = new Quiz({
+        title:request.body.title,
+        questions: request.body.questions,
+        code: request.body.code,
+        username: request.body.username,
+        players: request.body.players
         //correctAnswer: data.answer1,
         //otherAnswers: otherAnswers
     });
@@ -48,9 +66,11 @@ router.post('/add', function(request, response, next){
     });
 });
 
+
 //this gets all the quizzes from the database and sends them back clientside
 router.get('/quizzes', function(request, response, next){
-    return Quiz.find({}).exec(function(err, quizzes){
+    console.log("LOOK HERE!: " + request.body);
+    return Quiz.find({'username' : request.body.username }).exec(function(err, quizzes){
         if(err)throw new Error(err);
         response.send(JSON.stringify(quizzes));
         next();
@@ -71,7 +91,7 @@ router.post('/quizToPlay', function(request, response, next){
 
 //this finds a quiz by id in the database and deletes it
 router.post("/quizzes", function(req, res, next){
-    console.log("hello");
+    //console.log("hello");
     console.log(req.body);
     //console.log(req);
     Quiz.findByIdAndRemove(req.body._id, req.body, function(err, post){
