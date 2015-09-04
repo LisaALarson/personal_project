@@ -14,16 +14,22 @@ myApp.controller('StudentHomeController', ['$scope', '$http', 'userProperties', 
                 throw new Error("Failed to save and return quiz from the api");
             }
             //$scope.quiz = {};
-            $scope.quizzes = response.data;//comment out when implementing for loop
-            console.log($scope.quizzes);
+            //$scope.quizzes = response.data;//comment out when implementing for loop
+            //console.log($scope.quizzes);
+            //console.log(response.data.players);
 
-            //for (var i = 0; i<response.data.length; i++){
-            //    if(response.data[i].username == $scope.username){ //need to look for response.data[i].players[i]
-            //        $scope.quizzes.push(response.data[i]);
-            //        console.log($scope.quizzes);
-            //    }
-            //}
-            //console.log("final list of quizzes: "+ $scope.quizzes);
+            for (var i = 0; i<response.data.length; i++){
+                for(var j = 0; j<response.data[i].players.length; j++){
+                    if(response.data[i].players[j] == $scope.username){
+                        $scope.quizzes.push(response.data[i]);
+                    }
+                }
+                //if(response.data[i].username == $scope.username){ //need to look for response.data[i].players[i]
+                //    $scope.quizzes.push(response.data[i]);
+                //    console.log($scope.quizzes);
+                //}
+            }
+            console.log("final list of quizzes: "+ $scope.quizzes);
 
 
             return response.data;

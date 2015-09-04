@@ -14,7 +14,7 @@ myApp.controller('TeacherHomeController', ['$scope', '$http', 'userProperties', 
             }
             //$scope.quiz = {};
             //$scope.quizzes = response.data;
-            console.log($scope.quizzes);
+            //console.log($scope.quizzes);
 
             for (var i = 0; i<response.data.length; i++){
                 if(response.data[i].username == $scope.username){

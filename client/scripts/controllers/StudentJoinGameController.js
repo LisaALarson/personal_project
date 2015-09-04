@@ -19,8 +19,12 @@ myApp.controller('StudentJoinGameController', ['$scope', '$http', 'userPropertie
             if(response.status !==200){
                 throw new error("Failed to get game from the database");
             }
-            $scope.quizzesToPlay = [];
 
+            $scope.sendInfo = {};
+            $scope.sendInfo.id = response.data._id;
+            $scope.sendInfo.player = $scope.username;
+
+            $scope.quizzesToPlay = [];
 
             response.data.players.push($scope.username);
 
@@ -31,7 +35,7 @@ myApp.controller('StudentJoinGameController', ['$scope', '$http', 'userPropertie
             //return response.data;
 
             //now I need to save this to the database (through an additional post
-            return $http.post('/add-player', response.data).then(function(response){
+            return $http.post('/add-player', $scope.sendInfo).then(function(response){
                 if(response.status !=200){
                     throw new error("Failed to get game from the database");
                 }
