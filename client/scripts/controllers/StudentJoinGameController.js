@@ -9,7 +9,7 @@ myApp.controller('StudentJoinGameController', ['$scope', '$http', 'userPropertie
 
     // this function pulls a specific game from the database based on the game code
     $scope.fetchGame = function(gameCode){
-        //console.log("Lisa, set up a get request to get game by game code from the server");
+
         console.log(gameCode);
         var newObj = {
             code: gameCode

@@ -1,4 +1,4 @@
-myApp.controller('StudentHomeController', ['$scope', '$http', 'userProperties', function($scope, $http, userProperties){
+myApp.controller('StudentHomeController', ['$scope', '$http', 'userProperties', '$location', function($scope, $http, userProperties, $location){
     //console.log("student home controller");
 
     $scope.username = userProperties.get('username');
@@ -40,18 +40,45 @@ myApp.controller('StudentHomeController', ['$scope', '$http', 'userProperties', 
     //this calls the fetchQuizzes() function on page load
     $scope.fetchQuizzes();
 
+
+
+
+    $scope.playGame = function(quiz){
+        $scope.thisQuiz = quiz;
+
+        //return $http.post('/quizToPlay', quiz.code).then(function(response){
+        //    if(response.status !==200){
+        //        throw new error("Failed to get game from the database");
+        //    }
+        //    console.log(response.data);
+
+
+        //console.log("HERES THE QUIZ!"+ $scope.thisQuiz._id);
+        //console.log(response.data);
+        //console.log("hi");
+        console.log($scope.thisQuiz);
+        userProperties.set('currentQuiz', $scope.thisQuiz);
+        $location.path('sPlayGame');
+
+        //});
+    };
+
+
+
+
+    //not functional yet
     $scope.deleteGame = function(){
         confirm("Are you sure you want to delete this game?");
         //return $http.delete("/:id").then(fetchQuizzes());
     };
 
-    $scope.fetchData = function() {
-        //$http .then({
-            //set $scope
-    //});
-    };
-
-    $scope.fetchData();
+    //$scope.fetchData = function() {
+    //    //$http .then({
+    //        //set $scope
+    ////});
+    //};
+    //
+    //$scope.fetchData();
 
 
 

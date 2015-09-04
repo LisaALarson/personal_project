@@ -17,8 +17,10 @@
 
 <ul>
     <li ng-repeat="quiz in quizzes track by quiz['id']">
-        <a href="#sPlayGame">{{quiz.title}}</a>
-        <button class="deleteQuiz" ng-click="deleteQuiz(quiz)">Delete Quiz</button>
+        <a ng-click="playGame(quiz)">{{quiz.title}}</a>
+        <!--<h5><button ng-click="authLogin(loginForm)">Login</button></h5>-->
+
+        <!--<button class="deleteQuiz" ng-click="deleteQuiz(quiz)">Delete Quiz</button>-->
         <br>
         Teacher: {{quiz.username}}
         <hr>

@@ -41,10 +41,7 @@ myApp.config(['$routeProvider', function($routeProvider){
             controller: "StudentRegisterController"
         }).
         otherwise({
-            //if logged in as teacher, go to...
             redirectTo: "/login"
-            //else, go to...
-            //redirectTo: "/sHome"
         })
 }]);
 
