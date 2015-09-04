@@ -27,7 +27,11 @@ router.post('/add-player', function(request, response, next){
         //otherAnswers: otherAnswers
     });
     console.log("ASNCAOMWFCNISA", request.body.players);
-    Quiz.findByIdAndUpdate(request.body._id, {$push:{'players': request.body.players}},
+    //Quiz.findByIdAndRemove(request.body._id, {$push: {'players': request.body.players}},
+    //    {safe: true, upsert:true}, function(err){
+    //        console.log(err);
+    //    });
+    Quiz.findByIdAndUpdate(request.body._id, {$push:{'players': request.body.players[request.body.players.length-1]}},
         {safe: true, upsert:true}, function(err){
             console.log(err);
         });
